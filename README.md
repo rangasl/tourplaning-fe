@@ -6,7 +6,6 @@ This is a Next.js project created for tour planing in sri lanka. It is designed 
 
 To run the development server, use one of the following commands:
 
-```bash
 npm run dev
 # or
 yarn dev

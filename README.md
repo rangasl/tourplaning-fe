@@ -1,8 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# TOUR PLANER FRONT END
+
+This is a Next.js project created for tour planing in sri lanka. It is designed to help users plan and organize their trips, providing features such as trip recommendations, user authentication, and place creation.
 
 ## Getting Started
 
-First, run the development server:
+To run the development server, use one of the following commands:
 
 ```bash
 npm run dev
@@ -12,29 +14,27 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 with your browser to see the application in action.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+You can start editing the main page by modifying pages/index.tsx. The page auto-updates as you make changes.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## This project utilizes several libraries, including:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+    React: A JavaScript library for building user interfaces.
+    Next.js: A React framework that enables functionality such as server-side rendering and generating static websites.
+    Axios: A promise-based HTTP client for making API requests.
+    React-Select: A flexible and customizable Select component for React.
+    React-Stars: A star rating component for React applications.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+API routes are accessible on http://localhost:3000/api/. Explore and customize these routes in the pages/api/ directory.
 
-## Learn More
+This project utilizes next/font to automatically optimize and load Inter, a custom Google Font.
 
-To learn more about Next.js, take a look at the following resources:
+## Project Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    User Authentication: Ensure a secure experience with user authentication. Users need to log in before accessing certain features.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    Trip Planning: Plan your trips by providing budget, time, and preferences. Get recommendations based on your criteria.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    Place Creation: Contribute to the community by adding new places with details such as name, visiting cost, time, rating, and category.

@@ -5,7 +5,7 @@ This is a Next.js project created for tour planing in sri lanka. It is designed 
 ## Getting Started
 
 To run the development server, use one of the following commands:
-
+~~~
 npm run dev
 # or
 yarn dev
@@ -13,7 +13,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
-
+~~~
 Open http://localhost:3000 with your browser to see the application in action.
 
 You can start editing the main page by modifying pages/index.tsx. The page auto-updates as you make changes.

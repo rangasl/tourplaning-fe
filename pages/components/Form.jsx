@@ -177,8 +177,8 @@ const Form = () => {
 
   const startingPlace = {
     address: "Bandaranaike International Airport (CMB), Katunayake, Sri Lanka",
-    lat: 7.168310399999998,
-    lng: 79.8829646,
+    lat: 7.1768619,
+    lng: 79.8796934,
   };
 
   const initialMapCenter = startingPlace
@@ -293,27 +293,53 @@ const Form = () => {
               <div className="flex flex-col items-center space-y-5 p-10">
                 <div className="relative">
                   <p> Bandaranaike International Airport (CMB)</p>
+                  <div className="absolute left-1/2 pb-6 transform -translate-x-1/2 h-6 w-1 bg-teal-500"></div>
                 </div>
-                {tripResponse.trip_details.map((trip, index) => (
                 
-                  <div key={trip.index} className="relative">
-                      {<div className="absolute left-1/2 pb-6 transform -translate-x-1/2 h-6 w-1 bg-teal-500"></div>}
-                      <p className='mt-5 pt-1'>{trip.end_address.split(',')[0]}</p>
-                  </div>
+                {tripResponse && tripResponse.trip_details && Array.isArray(tripResponse.trip_details) && tripResponse.trip_details.map((trip, index) => (
+                    <div key={index} className="relative">
+                        {index !== 0 && <div className="absolute left-1/2 pb-6 transform -translate-x-1/2 h-6 w-1 bg-teal-500"></div>}
+                        <p className='mt-5 pt-1'>{tripResponse.selected_trips[index]}</p>
+                    </div>
                 ))}
+                <div className="relative">
+                  <div className="absolute left-1/2 pb-6 transform -translate-x-1/2 h-6 w-1 bg-teal-500"></div>
+                  <p className='mt-5 pt-1'> Bandaranaike International Airport (CMB)</p>
+                </div>
+
+
               </div>
+
+              {tripResponse && tripResponse.day_trip_dict && (
+                <div className="day-trip-container mt-8">
+                  {Object.keys(tripResponse.day_trip_dict).map((day, index) => (
+                    <div key={index} className="border border-gray-200 rounded-md p-4 mb-4 text-center">
+                      <h2 className="text-xl font-semibold mb-2 text-teal-500">{day}</h2>
+                      <ul>
+                        {tripResponse.day_trip_dict[day].map((place, index) => (
+                          <li key={index} className="mb-1">{place}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+
+
             </div>
 
-            {tripResponse && tripResponse.traveling_distance !== undefined && (
+            {tripResponse && tripResponse.traveling_distance !== undefined && typeof tripResponse.traveling_distance === 'number' && (
               <div className="flex flex-col items-center space-y-5 p-10">
                 <h2 className="text-xl font-semibold">Total Traveling Distance :</h2>
                 <p>{tripResponse.traveling_distance.toFixed(2)} km</p>
               </div>
             )}
+
             {tripResponse && tripResponse.traveling_time !== undefined && (
             <div className="flex flex-col items-center space-y-5 p-4">
               <h2 className="text-xl font-semibold">Total Time on the Road :</h2>
-              <p>{tripResponse.traveling_time.toFixed(2)} hours</p>
+              <p>{tripResponse.traveling_time} hours</p>
             </div>
             )}
             <div className="flex flex-col items-center space-y-5 p-4">
@@ -321,15 +347,15 @@ const Form = () => {
               <p>#### LKR</p>
             </div>
             <div className="flex flex-col items-center space-y-5 p-4">
-              <h1>Satisfaction:
+              {<h1>Satisfaction:
                 <ReactStars
                   count={5}
                   size={24}
                   edit={false}
-                  value={tripResponse.satifaction}
+                  value={tripResponse.total_satisfaction}
                   activeColor="#0D9488"
                 />
-              </h1>
+            </h1>}
             </div>
             <div className="map-container">
               <iframe
@@ -338,7 +364,7 @@ const Form = () => {
                 height="400"
                 frameBorder="0"
                 style={{ border: 0 }}
-                src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyBUf7bBjKqTTf4jt8swHjtaGEzzzNo8Few&origin=${startingPlace.lat},${startingPlace.lng}&destination=${tripResponse.trip_details[0].end_lat},${tripResponse.trip_details[0].end_lng}&waypoints=${tripResponse.trip_details.slice(1).map(trip => `${trip.end_lat},${trip.end_lng}`).join('|')}`}
+                src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyBUf7bBjKqTTf4jt8swHjtaGEzzzNo8Few&origin=${startingPlace.lat},${startingPlace.lng}&destination=${tripResponse.trip_details[0].place_name}&waypoints=${tripResponse.trip_details.slice(1).map(trip => `${trip.place_name}`).join('|')}`}
                 allowFullScreen
               ></iframe>
             </div>

@@ -32,6 +32,10 @@ const Login: React.FC = () => {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="w-full max-w-md p-6 bg-white shadow-md rounded-md">
+        
+        <h1 className="text-2xl font-semibold text-center mb-4 text-teal-600 ">Login</h1>
+
+
         <label className="block text-sm font-medium text-gray-600 mb-2">Username</label>
         <input
           type="text"
@@ -54,6 +58,10 @@ const Login: React.FC = () => {
         >
           Login
         </button>
+
+        <div className="text-center mt-4">
+          Don't have an account? <a href="/register" className="text-teal-600 hover:underline">Register</a>
+        </div>
       </div>
     </div>
   );

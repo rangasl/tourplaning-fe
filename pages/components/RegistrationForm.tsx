@@ -5,7 +5,7 @@ interface RegistrationFormProps {
 }
 
 const RegistrationForm: React.FC<RegistrationFormProps> = ({ onRegister }) => {
-  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+  const [formData, setFormData] = useState({ username: '', email: '', password: '', pin: ''});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,6 +29,10 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onRegister }) => {
       <label>
         Password:
         <input type="password" name="password" value={formData.password} onChange={handleChange} />
+      </label>
+      <label>
+        Pin:
+        <input type="password" name="pin" value={formData.pin} onChange={handleChange} />
       </label>
       <button type="submit">Register</button>
     </form>
